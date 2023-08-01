@@ -5,6 +5,7 @@
     <title>yarr!</title>
     <link rel="stylesheet" href="./static/stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="./static/stylesheets/app.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
     <link rel="icon" href="./static/graphicarts/favicon.svg" type="image/svg+xml">
     <link rel="alternate icon" href="./static/graphicarts/favicon.png" type="image/png">
     <link rel="manifest" href="./manifest.json" />
@@ -310,6 +311,7 @@
                     <button class="dropdown-item" :class="{active: !theme.font}" @click.stop="theme.font = ''">sans-serif</button>
                     <button class="dropdown-item font-serif" :class="{active: theme.font == 'serif'}" @click.stop="theme.font = 'serif'">serif</button>
                     <button class="dropdown-item font-monospace" :class="{active: theme.font == 'monospace'}" @click.stop="theme.font = 'monospace'">monospace</button>
+                    <button class="dropdown-item font-comic" :class="{active: theme.font == 'Comic Mono'}" @click.stop="theme.font = 'Comic Mono'">Comic Mono</button>
 
                     <div class="d-flex text-center">
                         <button class="dropdown-item" style="font-size: 0.8rem" @click.stop="incrFont(-1)">A</button>
@@ -333,7 +335,7 @@
             <div v-if="itemSelectedDetails"
                  ref="content"
                  class="content px-4 pt-3 pb-5 border-top overflow-auto"
-                 :class="{'font-serif': theme.font == 'serif', 'font-monospace': theme.font == 'monospace'}"
+                 :class="{'font-serif': theme.font == 'serif', 'font-monospace': theme.font == 'monospace', 'font-comic': theme.font == 'Comic Mono'}"
                  :style="{'font-size': theme.size + 'rem'}">
                 <div class="content-wrapper">
                     <h1><b>{{ itemSelectedDetails.title || 'untitled' }}</b></h1>

@@ -99,6 +99,10 @@ select.form-control:not([multiple]):not([size]) {
 
 /* custom elements */
 
+.font-comic {
+  font-family: Comic Mono;
+}
+
 .font-serif {
   font-family: Georgia, serif;
 }
