@@ -412,6 +412,19 @@
     <!-- external -->
     <script src="./static/javascripts/vue.min.js"></script>
     <!-- internal -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/javascripts/service-worker.js')
+                    .then(registration => {
+                        console.log('Service worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
     <script src="./static/javascripts/api.js"></script>
     <script src="./static/javascripts/app.js"></script>
     <script src="./static/javascripts/key.js"></script>

@@ -8,14 +8,14 @@ RUN apt install -y \
         binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg \
         gcc-arm-linux-gnueabihf \
         binutils-arm-linux-gnueabihf binutils-arm-linux-gnueabihf-dbg
-RUN env DEBIAN_FRONTEND=noninteractive \
-    apt install -y qemu-user qemu-user-static
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt install -y qemu-user qemu-user-static golang-1.20
 
 # Install Golang
-RUN wget --quiet https://go.dev/dl/go1.18.2.linux-amd64.tar.gz && \
-    rm -rf /usr/local/go && \
-    tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
-ENV PATH=$PATH:/usr/local/go/bin
+#RUN wget --quiet https://go.dev/dl/go1.18.2.linux-amd64.tar.gz && \
+#    rm -rf /usr/local/go && \
+#    tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz
+ENV PATH=$PATH:/usr/lib/go-1.20/bin/
 
 # Copy source code
 WORKDIR /root/src
@@ -41,4 +41,5 @@ RUN env \
         -ldflags="-s -w" \
         -o /root/out/yarr.arm7 src/main.go
 
-CMD ["/bin/bash"]
+CMD ["/root/out/yarr.arm64"]
+
